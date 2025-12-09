@@ -54,7 +54,7 @@ export default class UselessGapsExtension extends Extension {
     const yStart = this.marginTop + rects.workspace.y + this.gapSize;
 
 
-    if (window.get_maximized() === Meta.MaximizeFlags.BOTH){
+    if (window.get_maximize_flags() === Meta.MaximizeFlags.BOTH){
       window.unmaximize(Meta.MaximizeFlags.BOTH);
       window.move_resize_frame(false, xStart, yStart, newWidth, newHeight);
     }
@@ -93,12 +93,11 @@ export default class UselessGapsExtension extends Extension {
 
     if (change === Meta.SizeChange.MAXIMIZE)
     {
-      if (win.get_maximized() === Meta.MaximizeFlags.BOTH)
+      if (win.get_maximize_flags() === Meta.MaximizeFlags.BOTH)
       {
-        //  global.log("uselessgaps change","=== Meta.MaximizeFlags.BOTH");
         _windowids_size_change[win.get_id()]="gapmax";
       }
-      else if(win.get_maximized() === Meta.MaximizeFlags.VERTICAL){
+      else if(win.get_maximize_flags() === Meta.MaximizeFlags.VERTICAL){
         _windowids_size_change[win.get_id()]="gapvert";
 
       }
