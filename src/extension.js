@@ -44,6 +44,19 @@ export default class UselessGapsExtension extends Extension {
     };
   }
 
+  /**
+   * Get maximize flags in a way that is compatible with multiple GNOME versions
+   * @param {*} window 
+   * @returns MaximizeFlags
+   */
+  getMaximizeFlags(window){
+    if (typeof window.get_maximize_flags === 'function'){
+      return window.get_maximize_flags();
+    } else if (typeof window.get_maximized === 'function'){
+      return window.get_maximized();
+    }
+  }
+
   addWindowMargins(window){
     const rects = this.getRectangles(window);
 
@@ -54,7 +67,7 @@ export default class UselessGapsExtension extends Extension {
     const yStart = this.marginTop + rects.workspace.y + this.gapSize;
 
 
-    if (window.get_maximize_flags() === Meta.MaximizeFlags.BOTH){
+    if (this.getMaximizeFlags(window) === Meta.MaximizeFlags.BOTH){
       window.unmaximize(Meta.MaximizeFlags.BOTH);
       window.move_resize_frame(false, xStart, yStart, newWidth, newHeight);
     }
@@ -93,11 +106,11 @@ export default class UselessGapsExtension extends Extension {
 
     if (change === Meta.SizeChange.MAXIMIZE)
     {
-      if (win.get_maximize_flags() === Meta.MaximizeFlags.BOTH)
+      if (this.getMaximizeFlags(win) === Meta.MaximizeFlags.BOTH)
       {
         _windowids_size_change[win.get_id()]="gapmax";
       }
-      else if(win.get_maximize_flags() === Meta.MaximizeFlags.VERTICAL){
+      else if(this.getMaximizeFlags(win) === Meta.MaximizeFlags.VERTICAL){
         _windowids_size_change[win.get_id()]="gapvert";
 
       }
