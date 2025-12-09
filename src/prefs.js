@@ -13,99 +13,6 @@
  * You should have received a copy of the GNU General Public License
  * along with Useless Gaps.  If not, see <http://www.gnu.org/licenses/>.
  **********************************************************************/
-
-// import GObject from 'gi://GObject';
-// import Gio from 'gi://Gio';
-// import Gtk from 'gi://Gtk';
-// import { ExtensionPreferences } from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
-// import * as UI from './ui.js'
-
-// export default class UselessGapsPrefs extends ExtensionPreferences {
-
-//   getPreferencesWidget() {
-//     const settings = this.getSettings();
-//     const widget = new UselessGapsPrefsWidget(settings);
-//     return widget;
-//   }
-// }
-
-// const UselessGapsPrefsWidget = new GObject.Class({
-//   Name: 'Shortcuts.Prefs.Widget',
-//   GTypeName: 'UselessGapsPrefsWidget',
-//   Extends: Gtk.ScrolledWindow,
-
-//    _init: function(settings) {
-
-//     this.parent(
-//       {
-//         valign: Gtk.Align.FILL,
-//         vexpand: true
-//       }
-//     );
-
-//     this._settings = settings;
-
-//     this.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-
-//     this._grid = new UI.ListGrid();
-
-//     this.set_child(new UI.Frame(this._grid));
-
-//     let mainSettingsLabel = new UI.LargeLabel("Main Settings");
-//     this._grid._add(mainSettingsLabel)
-
-//     this._spinGapsize = new Gtk.SpinButton;
-//     this._spinGapsize.set_range(0, 300);
-//     this._spinGapsize.set_increments(1, 1);
-
-//     let label_gapsize = new UI.Label('Gap Size')
-//     this._grid._add(label_gapsize, this._spinGapsize);
-
-//     this._settings.bind("gap-size", this._spinGapsize, "value", Gio.SettingsBindFlags.DEFAULT);
-
-//     let noGapsForMaximizedWindowsCheckBox = new UI.Check("No gaps for maximized windows");
-//     this._settings.bind('no-gap-when-maximized', noGapsForMaximizedWindowsCheckBox, 'active', Gio.SettingsBindFlags.DEFAULT);
-//     this._grid._add(noGapsForMaximizedWindowsCheckBox);
-
-//     this._spinMarginTop = new Gtk.SpinButton;
-//     this._spinMarginTop.set_range(0, 300);
-//     this._spinMarginTop.set_increments(1, 1);
-
-//     let label_margin_top = new UI.Label('Extra margin top')
-//     this._grid._add(label_margin_top, this._spinMarginTop);
-
-//     this._settings.bind("margin-top", this._spinMarginTop, "value", Gio.SettingsBindFlags.DEFAULT);
-
-//     this._spinMarginBottom = new Gtk.SpinButton;
-//     this._spinMarginBottom.set_range(0, 300);
-//     this._spinMarginBottom.set_increments(1, 1);
-
-//     let label_margin_bottom = new UI.Label('Extra margin bottom')
-//     this._grid._add(label_margin_bottom, this._spinMarginBottom);
-
-//     this._settings.bind("margin-bottom", this._spinMarginBottom, "value", Gio.SettingsBindFlags.DEFAULT);
-
-//     this._spinMarginLeft = new Gtk.SpinButton;
-//     this._spinMarginLeft.set_range(0, 300);
-//     this._spinMarginLeft.set_increments(1, 1);
-
-//     let label_margin_left = new UI.Label('Extra margin left')
-//     this._grid._add(label_margin_left, this._spinMarginLeft);
-
-//     this._settings.bind("margin-left", this._spinMarginLeft, "value", Gio.SettingsBindFlags.DEFAULT);
-
-//     this._spinMarginRight = new Gtk.SpinButton;
-//     this._spinMarginRight.set_range(0, 300);
-//     this._spinMarginRight.set_increments(1, 1);
-
-//     let label_margin_right = new UI.Label('Extra margin right')
-//     this._grid._add(label_margin_right, this._spinMarginRight);
-
-//     this._settings.bind("margin-right", this._spinMarginRight, "value", Gio.SettingsBindFlags.DEFAULT);
-//   }
-// });
-
-
 //Main imports
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
@@ -151,7 +58,7 @@ class PrefsPage extends Adw.PreferencesPage {
       //Handle type-specific setup
       let settingRow = null;
       if (settingInfo[1] === 'spin') {
-        //Create a row with a switch, title and subtitle
+        //Create a row with a SpinRow, title and subtitle
         settingRow = new Adw.SpinRow({
           title: settingInfo[3],
           subtitle: settingInfo[4],
@@ -186,27 +93,6 @@ class PrefsPage extends Adw.PreferencesPage {
           'active', //The property to share
           Gio.SettingsBindFlags.DEFAULT
         );
-      } else if (settingInfo[1] === 'select') {
-        //Store the options for the setting
-        let stringList = new Gtk.StringList();
-        settingInfo[5].forEach((entry) => {
-          stringList.append(entry[1]);
-        });
-
-        //Create a row with a combo box, title and subtitle
-        settingRow = new Adw.ComboRow({
-          title: settingInfo[3],
-          subtitle: settingInfo[4],
-          model: stringList
-        });
-        settingRow._dropdownData = [...settingInfo[5]];
-        settingRow._settingKey = settingInfo[2];
-
-        settingRow.connect('notify::selected-item', (row) => {
-          let index = row.get_selected();
-          let value = row._dropdownData[index][0];
-          this._extensionSettings.set_string(row._settingKey, value);
-        });
       }
 
       //Add the row to the group
@@ -223,8 +109,8 @@ export default class UselessGapsPrefs extends ExtensionPreferences {
 
     let groupsInfo = [
       //Group ID, translated title, subtitle
-      ['general', _('General settings'), null],
-      ['advanced', _('Advanced settings'), _('Additional configuration options')]
+      ['general', _('General'), null],
+      ['advanced', _('Advanced'), _('Additional configuration options')]
     ];
 
     let settingsInfo = [
@@ -240,8 +126,7 @@ export default class UselessGapsPrefs extends ExtensionPreferences {
     //Create settings page from info
     let settingsPage = new PrefsPage(pageInfo, groupsInfo, settingsInfo, this.getSettings());
 
-    //Add the pages to the window, enable searching
+    //Add the pages to the window
     window.add(settingsPage);
-    window.set_search_enabled(true);
   }
 }

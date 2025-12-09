@@ -14,7 +14,6 @@ echo "Packing extension..."
 gnome-extensions pack src \
   --force \
   --podir="../po" \
-  --extra-source="ui.js" \
   --extra-source="../LICENSE" \
   --extra-source="../CHANGELOG.md"
 }
