@@ -1,5 +1,5 @@
 <schemalist>
-  <schema id="org.gnome.shell.extensions.useless-gaps" path="/org/gnome/shell/extensions/useless-gaps/">
+  <schema id="org.gnome.shell.extensions.useless-gaps-fork" path="/org/gnome/shell/extensions/useless-gaps-fork/">
     <key name="gap-size" type="i">
       <default>20</default>
       <summary>Gap size between windows</summary>
