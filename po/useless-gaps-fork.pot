@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-09 13:20+0000\n"
+"POT-Creation-Date: 2025-12-09 18:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,82 +17,66 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/prefs.js:222
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:222
+#: src/prefs.js:108
 msgid "Settings"
 msgstr ""
 
-#: src/prefs.js:226
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:226
-msgid "General settings"
+#: src/prefs.js:112
+msgid "General"
 msgstr ""
 
-#: src/prefs.js:227
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:227
-msgid "Advanced settings"
+#: src/prefs.js:113
+msgid "Advanced"
 msgstr ""
 
-#: src/prefs.js:227
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:227
+#: src/prefs.js:113
 msgid "Additional configuration options"
 msgstr ""
 
-#: src/prefs.js:232
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:232
+#: src/prefs.js:118
 msgid "Gap size"
 msgstr ""
 
-#: src/prefs.js:232
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:232
+#: src/prefs.js:118
 msgid "Size of the gaps between windows"
 msgstr ""
 
-#: src/prefs.js:233
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:233
+#: src/prefs.js:119
 msgid "No gaps for maximized windows"
 msgstr ""
 
-#: src/prefs.js:233
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:233
+#: src/prefs.js:119
 msgid "Disable gaps when a window is maximized"
 msgstr ""
 
-#: src/prefs.js:234
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:234
+#: src/prefs.js:120
 msgid "Extra margin top"
 msgstr ""
 
-#: src/prefs.js:234
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:234
+#: src/prefs.js:120
 msgid "Additional margin added to the top of the screen"
 msgstr ""
 
-#: src/prefs.js:235
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:235
+#: src/prefs.js:121
 msgid "Extra margin bottom"
 msgstr ""
 
-#: src/prefs.js:235
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:235
+#: src/prefs.js:121
 msgid "Additional margin added to the bottom of the screen"
 msgstr ""
 
-#: src/prefs.js:236
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:236
+#: src/prefs.js:122
 msgid "Extra margin left"
 msgstr ""
 
-#: src/prefs.js:236
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:236
+#: src/prefs.js:122
 msgid "Additional margin added to the left of the screen"
 msgstr ""
 
-#: src/prefs.js:237
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:237
+#: src/prefs.js:123
 msgid "Extra margin right"
 msgstr ""
 
-#: src/prefs.js:237
-#: useless-gaps-fork@motorlatitude.com.shell-extension/prefs.js:237
+#: src/prefs.js:123
 msgid "Additional margin added to the right of the screen"
 msgstr ""
