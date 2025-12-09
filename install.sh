@@ -7,7 +7,7 @@ if [ "$UID" = "0" ]; then
     exit 101
 fi
 
-NAME=useless-gaps\@pimsnel.com
+NAME=useless-gaps-fork\@motorlatitude.com
 
 function pack-extension {
 echo "Packing extension..."
